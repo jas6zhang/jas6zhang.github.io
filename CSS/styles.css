@@ -8,6 +8,63 @@ body {
   width: 50px;
 }
 
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 30px;
+  float: right;
+  color: #2E3D48;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
 /* Top
 ---------------------*/
 .top-container {
@@ -18,7 +75,7 @@ body {
 .ball {
   position: absolute;
   border-radius: 100%;
-  opacity: 0.6;
+  opacity: 0.3;
   z-index: -1;
 }
 
@@ -68,7 +125,9 @@ html {
   top: 90px;
   font-family: 'Quicksand', 'Arial';
   font-weight: 600;
-  color: #efa8e4;
+  color: #696969;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .seperation {
