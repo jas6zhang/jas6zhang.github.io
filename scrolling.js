@@ -33,7 +33,7 @@ function revealimg() {
 }
 
 var i = 0;
-var txt = '- Lifelong Student & Occasional Programmer.'; /* The text */
+var txt = '- Lifelong Student & Occasional Developer.'; /* The text */
 var speed = 80; /* The speed/duration of the effect in milliseconds */
 
 function typeWriter() {
