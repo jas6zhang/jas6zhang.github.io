@@ -32,16 +32,22 @@ function revealimg() {
   }
 }
 
-var i = 0;
-var txt = '- Lifelong Student & Occasional Developer.'; /* The text */
-var speed = 80; /* The speed/duration of the effect in milliseconds */
+// var i = 0;
+// var txt = '- Lifelong Student & Occasional Developer.'; /* The text */
+// var speed = 80; /* The speed/duration of the effect in milliseconds */
 
-function typeWriter() {
+// function typeWriter() {
 
-  if (i < txt.length) {
-    document.getElementById("typewriter").innerHTML += txt.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-  }
-}
-typeWriter()
+//   if (i < txt.length) {
+//     document.getElementById("typewriter").innerHTML += txt.charAt(i);
+//     i++;
+//     setTimeout(typeWriter, speed);
+//   }
+// }
+// typeWriter()
+
+new TypeIt("#typewriter", {
+  strings: '- Lifelong Student & Occasional Developer.',
+  speed: 75,
+  waitUntilVisible: true
+}).go();
