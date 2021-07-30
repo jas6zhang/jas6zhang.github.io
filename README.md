@@ -1,3 +1,3 @@
 # jas6zhang.github.io
 My personal website!
-![image](https://user-images.githubusercontent.com/65873016/127719261-851ccbb2-235c-404a-8e57-7682bfd2885c.png)
+![image](https://user-images.githubusercontent.com/65873016/127719291-a51d5a66-a165-4a75-a628-cdf5d0102807.png)
