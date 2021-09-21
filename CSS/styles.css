@@ -580,3 +580,7 @@ html {
   cursor: pointer;
   pointer-events: auto;
 }
+
+.phyxable {
+  border:1px solid #000000;
+}
