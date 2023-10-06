@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Showdown Ladder Ranking</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+
+    <!-- <link rel="stylesheet" href="assets/timeline.css" />
+    <script src="assets/timeline.js"></script> -->
+
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="CSS/styles.css" type="text/css">
+    <link rel="stylesheet" href="CSS/loading.css">
+</head>
+
+<body>
+    <h1>
+        HI
+    </h1>
+    <svg id="rankingChart" width="800" height="400"></svg>
+
+    <script>
+        const svg = d3.select("#rankingChart");
+        const margin = {
+            top: 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        };
+        const width = +svg.attr("width") - margin.left - margin.right;
+        const height = +svg.attr("height") - margin.top - margin.bottom;
+        const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const x = d3.scaleTime().rangeRound([0, width]);
+        const y = d3.scaleLinear().rangeRound([height, 0]);
+
+        const line = d3.line()
+            .x(d => x(d.date))
+            .y(d => y(d.rank));
+
+        let dataPoints = [];
+
+        function updateGraph() {
+            g.selectAll('*').remove();
+
+            x.domain(d3.extent(dataPoints, d => d.date));
+            y.domain([0, d3.max(dataPoints, d => d.rank)]);
+
+            g.append("g")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(x));
+
+            g.append("g")
+                .call(d3.axisLeft(y))
+                .append("text")
+                .attr("fill", "#000")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", "0.71em")
+                .attr("text-anchor", "end")
+                .text("Ranking");
+
+            g.append("path")
+                .datum(dataPoints)
+                .attr("fill", "none")
+                .attr("stroke", "steelblue")
+                .attr("stroke-linejoin", "round")
+                .attr("stroke-linecap", "round")
+                .attr("stroke-width", 1.5)
+                .attr("d", line);
+        }
+
+        // function fetchDataAndUpdateGraph() {
+        //     fetch("https://pokemonshowdown.com/ladder/gen9monotyperandombattle.json")
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             const myRanking = data.find(item => item.userid === "yellowjello123");
+        //             if (myRanking) {
+        //                 dataPoints.push({
+        //                     date: new Date(),
+        //                     rank: myRanking.elo
+        //                 });
+        //                 updateGraph();
+        //             }
+        //         });
+        // }
+        function fetchDataAndUpdateGraph() {
+            fetch("https://pokemonshowdown.com/ladder/gen9monotyperandombattle.json")
+                .then(response => response.json())
+                .then(data => {
+                    // cause im not on top list rn lol 
+                    const myRanking = data.toplist.find(item => item.userid === "yellowjello123");
+                    if (myRanking) {
+                        dataPoints.push({
+                            date: new Date(),
+                            rank: myRanking.elo
+                        });
+                        updateGraph();
+                    } else {
+                        dataPoints.push({
+                            date: new Date(),
+                            rank: 500
+                        });
+                        updateGraph();
+
+                    }
+                });
+        }
+
+
+        fetchDataAndUpdateGraph(); // Call once initially
+        // 86400000 every day
+        setInterval(fetchDataAndUpdateGraph, 60000); // Update every minute
+    </script>
+
+</body>
+
+</html>

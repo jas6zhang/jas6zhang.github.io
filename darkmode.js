@@ -18,8 +18,11 @@ function switchTheme(e) {
     if (e.target.checked) {
         document.documentElement.setAttribute("data-theme", "dark");
         currentTheme = "dark";
+        document.getElementById('slider-img').src  = 'Images/moon.png';
+
     } else {
         document.documentElement.setAttribute("data-theme", "light");
+        document.getElementById('slider-img').src  = 'Images/sun.png';
         currentTheme = "light";
     }
 }
