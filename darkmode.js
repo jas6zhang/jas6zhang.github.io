@@ -12,8 +12,6 @@ if (currentTheme) {
 }
 
 // Using value of checkbox and its attribute checked
-
-// documentElement returns the Element that is the root element of the document
 function switchTheme(e) {
     if (e.target.checked) {
         document.documentElement.setAttribute("data-theme", "dark");
