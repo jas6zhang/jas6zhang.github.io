@@ -1,2 +1,2 @@
 User-Agent: *
-Sitemap: http://localhost:1313/blog/sitemap.xml
+Sitemap: https://jas6zhang.github.io/blog/sitemap.xml
